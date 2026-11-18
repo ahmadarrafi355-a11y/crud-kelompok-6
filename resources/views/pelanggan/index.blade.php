@@ -1,5 +1,29 @@
 <h1>Daftar Pelanggan</h1>
 
+<style>
+    body {
+        font-family: Arial;
+        background-color: #f0f4f8;
+        padding: 20px;
+    }
+
+    h1 {
+        color: blue;
+    }
+
+    table {
+        background-color: white;
+        border-collapse: collapse;
+    }
+
+    th {
+        background-color: lightblue;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+</style>
 @if (session('success'))
     <div style="color: green; font-weight: bold;">
         {{ session('success') }}
