@@ -18,20 +18,30 @@ class PelangganController extends Controller
      */
     public function create()
     {
-        //
+        return view ('pelanggan.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
-    }
+public function store(Request $request)
+{
+    $validated = $request->validate([
+        'kode_pelanggan' => 'required|unique:pelanggans',
+        'nama' => 'required',
+        'kategori' => 'required',
+        'email' => 'required|email',
+        'tanggal_daftar' => 'required|date',
+        'alamat' => 'required',
+        'keterangan' => 'nullable',
+    ]);
 
-    /**
-     * Display the specified resource.
-     */
+    Pelanggan::create($validated);
+
+    return redirect()->route('pelanggan.index')
+        ->with('success', 'Data pelanggan berhasil ditambahkan!');
+}
+
     public function show(string $id)
     {
         //
