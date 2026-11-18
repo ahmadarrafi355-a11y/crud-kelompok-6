@@ -84,7 +84,12 @@ public function store(Request $request)
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
-        //
-    }
+{
+    $pelanggan = Pelanggan::findOrFail($id);
+
+    $pelanggan->delete();
+
+    return redirect()->route('pelanggan.index')
+        ->with('success', 'Data pelanggan berhasil dihapus!');
+}
 }
