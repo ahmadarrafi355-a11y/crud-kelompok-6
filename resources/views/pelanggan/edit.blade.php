@@ -1,51 +1,50 @@
+
 <h1>Edit Pelanggan</h1>
 
-<form action="{{ route('pelanggans.update', $pelanggan->id) }}" method="POST">
+<form action="{{ route('pelanggan.update', $pelanggan->id) }}" method="POST">
     @csrf
     @method('PUT')
 
-    <p><label for="kode_pelanggan">Kode Pelanggan:</label>
-    <input type="text" name="kode_pelanggan" id="kode_pelanggan" value="{{ $pelanggan->kode_pelanggan }}" required>
+    <p>
+        Kode Pelanggan:
+        <input type="text" name="kode_pelanggan"
+            value="{{ $pelanggan->kode_pelanggan }}" required>
     </p>
 
     <p>
-    <label for="nama">Nama:</label>
-    <input type="text" name="nama" id="nama" value="{{ $pelanggan->nama }}" required>
+        Nama:
+        <input type="text" name="nama"
+            value="{{ $pelanggan->nama }}" required>
     </p>
 
     <p>
-    <label for="kategori">Kategori:</label>
-    <select name="kategori" id="kategori" required>
-        <option value="Reguler" {{ $pelanggan->kategori === 'Reguler' ? 'selected' : '' }}>Reguler</option>
-        <option value="Premium" {{ $pelanggan->kategori === 'Premium' ? 'selected' : '' }}>Premium</option>
-        <option value="VIP" {{ $pelanggan->kategori === 'VIP' ? 'selected' : '' }}>VIP</option>
-    </select>
+        Kategori:
+        <input type="text" name="kategori"
+            value="{{ $pelanggan->kategori }}" required>
     </p>
 
     <p>
-    <label for="email">Email:</label>
-    <input type="email" name="email" id="email" value="{{ $pelanggan->email }}" required>
-    </p>
-
-    <p> <label for="tanggal_daftar">Tanggal Daftar:</label>
-    <input type="date" name="tanggal_daftar" id="tanggal_daftar" value="{{ $pelanggan->tanggal_daftar }}" required>
-    </p>
-
-
-    <p>
-    <label for="alamat">Alamat:</label>
-    <textarea name="alamat" id="alamat" required>{{ $pelanggan->alamat }}</textarea>
+        Email:
+        <input type="email" name="email"
+            value="{{ $pelanggan->email }}" required>
     </p>
 
     <p>
-    <label for="keterangan">Keterangan:</label>
-    <textarea name="keterangan" id="keterangan">{{ $pelanggan->keterangan }}</textarea>
+        Tanggal Daftar:
+        <input type="date" name="tanggal_daftar"
+            value="{{ $pelanggan->tanggal_daftar }}" required>
     </p>
 
-    <button type="submit">Simpan Perubahan</button>
-    <button><a href="{{ route('pelanggans.index') }}">Kembali</a></button>
+    <p>
+        Alamat:
+        <textarea name="alamat" required>{{ $pelanggan->alamat }}</textarea>
+    </p>
+
+    <p>
+        Keterangan:
+        <textarea name="keterangan">{{ $pelanggan->keterangan }}</textarea>
+    </p>
+
+    <button type="submit">Update</button>
+    <a href="{{ route('pelanggan.index') }}">Kembali</a>
 </form>
-
-<style>
-    .btn
-</style>

@@ -52,16 +52,33 @@ public function store(Request $request)
      */
     public function edit(string $id)
     {
-        //
+         $pelanggan = Pelanggan::findOrFail($id);
+
+    return view('pelanggan.edit', compact('pelanggan'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+ public function update(Request $request, string $id)
+{
+    $pelanggan = Pelanggan::findOrFail($id);
+
+    $validated = $request->validate([
+        'kode_pelanggan' => 'required|unique:pelanggans,kode_pelanggan,' . $id,
+        'nama' => 'required',
+        'kategori' => 'required',
+        'email' => 'required|email',
+        'tanggal_daftar' => 'required|date',
+        'alamat' => 'required',
+        'keterangan' => 'nullable',
+    ]);
+
+    $pelanggan->update($validated);
+
+    return redirect()->route('pelanggan.index')
+        ->with('success', 'Data pelanggan berhasil diperbarui!');
+}
 
     /**
      * Remove the specified resource from storage.
